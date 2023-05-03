@@ -21,7 +21,7 @@ input_list = reader.final_data
 registors = [R0, R1, R2, R3, R4, R5, R6, FLAG]
 
 print(ISA)
-
+print(reader.final_data)
 
 machinecode = []
 
@@ -34,3 +34,38 @@ for i in range(len(input_list)):
         machinecode[i].append(ISA['sub'])
     elif input_list[i][0] == 'mov':
         machinecode[i].append(ISA['mov'])
+    elif input_list[i][0] == 'ld':
+        machinecode[i].append(ISA['ld'])
+    elif input_list[i][0] == 'st':
+        machinecode[i].append(ISA['st'])
+    elif input_list[i][0] == 'mul':
+        machinecode[i].append(ISA['mul'])
+    elif input_list[i][0] == 'div':
+        machinecode[i].append(ISA['div'])
+    elif input_list[i][0] == 'rs':
+        machinecode[i].append(ISA['rs'])
+    elif input_list[i][0] == 'ls':
+        machinecode[i].append(ISA['ls'])
+    elif input_list[i][0] == 'xor':
+        machinecode[i].append(ISA['xor'])
+    elif input_list[i][0] == 'or':
+        machinecode[i].append(ISA['or'])
+    elif input_list[i][0] == 'and':
+        machinecode[i].append(ISA['and'])
+    elif input_list[i][0] == 'not':
+        machinecode[i].append(ISA['not'])
+    elif input_list[i][0] == 'cmp':
+        machinecode[i].append(ISA['cmp'])
+    elif input_list[i][0] == 'jmp':
+        machinecode[i].append(ISA['jmp'])
+    elif input_list[i][0] == 'jlt':
+        machinecode[i].append(ISA['jlt'])
+    elif input_list[i][0] == 'jgt':
+        machinecode[i].append(ISA['jgt'])
+    elif input_list[i][0] == 'je':
+        machinecode[i].append(ISA['je'])
+    elif input_list[i][0] == 'hlt':
+        machinecode[i].append(ISA['hlt'])    
+    
+    
+print(machinecode)
