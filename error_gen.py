@@ -17,6 +17,7 @@ for i in final_data:
         vars = False
     if (i[0] == 'var'): #checks for erroe in middle of code
         if (vars == False):
+            
             print("variable assigned in middle of code")
             error_present = True
     for j in i:    #checks for more than one halt
@@ -58,10 +59,12 @@ for i in final_data:
           
 
 if hlt_count == 0:
+    
     print('No halt statement found')
     error_present = True
 
 if final_data[-1][-1] != 'hlt':  #checks for last command to be halt
+    
     print("last command is not hlt")
     error_present = True
 
