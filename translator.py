@@ -1,6 +1,5 @@
 import reader
 from functions import dec_to_bin, gen_address
-#we still have to work on lables and mem address
 
 R0 = 0
 R1 = 0
@@ -15,7 +14,6 @@ raw_regs = open("register.txt", "r")
 raw_regs = raw_regs.read()
 regs = eval(raw_regs)
 
-#print(regs)
 
 f = open("ISA.txt", "r")
 ISA = f.read()
@@ -24,9 +22,6 @@ ISA = eval(ISA)
 input_list = reader.final_data
 
 registors = [R0, R1, R2, R3, R4, R5, R6, FLAG]
-
-#print(ISA)
-#print(reader.final_data)
 
 machinecode = []
 
@@ -38,7 +33,6 @@ lables_dict = {}
 variables = {}
 add_var = 0
 
-#for label managements:
 for i in range(len(input_list)):
     machinecode.append([])
     if input_list[i][0] == 'var':
@@ -62,7 +56,6 @@ for i in range(len(input_list)):
             machinecode[i].append(regs[input_list[i][3]])
             machinecode[i].append(regs[input_list[i][4]])
         elif input_list[i][1] == 'mov':
-            #machinecode[i].append(ISA['mov'])
             if(input_list[i][3][0] == "$"):
                 machinecode[i].append("00010")
                 machinecode[i].append("0")
@@ -74,24 +67,16 @@ for i in range(len(input_list)):
                 machinecode[i].append("00000")
                 machinecode[i].append(regs[input_list[i][2]])
                 machinecode[i].append(regs[input_list[i][3]])
-                #print("other conditionw orkds ")
         elif input_list[i][1] == 'ld':
             machinecode[i].append(ISA['ld'])
             machinecode[i].append["0"]
             machinecode[i].append(regs[input_list[i][2]])
-            #machinecode[i].append(input_list[i][1])
             machinecode[i].append("Memory location")
         elif input_list[i][1] == 'st':
             machinecode[i].append(ISA['st'])
             machinecode[i].append("0")
             machinecode[i].append(regs[input_list[i][2]])
             machinecode[i].append(variables[input_list[i][3]])
-            #print(input_list[i][3])
-            #print(variables)
-            #print(input_list[i][3])
-
-            #machinecode[i].append(variables[input_list[i][3]])
-            #machinecode[i].append("Memory location")
         elif input_list[i][1] == 'mul':
             machinecode[i].append(ISA['mul'])
             machinecode[i].append("00")
@@ -145,22 +130,18 @@ for i in range(len(input_list)):
             machinecode[i].append(ISA['jmp'])
             machinecode[i].append("0000")
             machinecode[i].append(lables_dict[input_list[i][1]+':'])
-            #machinecode[i].append("memory address")
         elif input_list[i][1] == 'jlt':
             machinecode[i].append(ISA['jlt'])
             machinecode[i].append("0000")
             machinecode[i].append(lables_dict[input_list[i][1]+':'])
-            #machinecode[i].append("memory address")
         elif input_list[i][1] == 'jgt':
             machinecode[i].append(ISA['jgt'])
             machinecode[i].append("0000")
             machinecode[i].append(lables_dict[input_list[i][1]+':'])
-            #machinecode[i].append("memory address")
         elif input_list[i][1] == 'je':
             machinecode[i].append(ISA['je'])
             machinecode[i].append("0000")
             machinecode[i].append(lables_dict[input_list[i][1]+':'])
-            #machinecode[i].append("memory address")
         elif input_list[i][1] == 'hlt':
             machinecode[i].append(ISA['hlt'])    
             machinecode[i].append("00000000000")
@@ -169,7 +150,7 @@ for i in range(len(input_list)):
 
 
 
-print(labels) 
+
 
 for i in range(len(input_list)): 
     if input_list[i][0] == 'var':
@@ -183,7 +164,7 @@ for i in range(len(input_list)):
         machinecode[i].append(regs[input_list[i][1]])
         machinecode[i].append(regs[input_list[i][2]])
         machinecode[i].append(regs[input_list[i][3]])
-        print(input_list[i][1])
+        #print(input_list[i][1])
     elif input_list[i][0] == 'sub':
         machinecode[i].append(ISA['sub'])
         machinecode[i].append("00")
@@ -197,7 +178,7 @@ for i in range(len(input_list)):
             machinecode[i].append("0")
             machinecode[i].append(regs[input_list[i][1]])
             machinecode[i].append(dec_to_bin(input_list[i][2]))
-            print(input_list[i][2])
+            #print(input_list[i][2])
         else:
             machinecode[i].append("00011")
             machinecode[i].append("00000")
@@ -269,29 +250,23 @@ for i in range(len(input_list)):
         machinecode[i].append(ISA['jmp'])
         machinecode[i].append("0000")
         machinecode[i].append(lables_dict[input_list[i][1]+':'])
-        #machinecode[i].append("memoryloction")
     elif input_list[i][0] == 'jlt':
         machinecode[i].append(ISA['jlt'])
         machinecode[i].append("0000")
         machinecode[i].append(lables_dict[input_list[i][1]+':'])
-        #machinecode[i].append("memoryloction")
     elif input_list[i][0] == 'jgt':
         machinecode[i].append(ISA['jgt'])
         machinecode[i].append("0000")
         machinecode[i].append(lables_dict[input_list[i][1]+':'])
-        #machinecode[i].append("memoryloction")
     elif input_list[i][0] == 'je':
         machinecode[i].append(ISA['je'])
         machinecode[i].append("0000")
-        #machinecode[i].append("memoryloction")
-        #print("look here!!->",input_list[i][1])
         machinecode[i].append(lables_dict[input_list[i][1]+':'])
     elif input_list[i][0] == 'hlt':
         machinecode[i].append(ISA['hlt'])    
         machinecode[i].append("00000000000")
 
-print("\n")
+
 for i in machinecode:
     print(i)
 
-print(lables_dict)
