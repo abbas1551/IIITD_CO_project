@@ -10,3 +10,5 @@ def gen_address(count):
     address = bin(count)[2:]
     address = address.zfill(7)
     return address
+
+
