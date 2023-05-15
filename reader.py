@@ -2,7 +2,6 @@ f = open("input.txt", "r")
 data = f.read()
 
 
-
 def reader(data):
     intermediate_data = data.split("\n")
     final_list = []
