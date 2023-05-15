@@ -22,12 +22,16 @@ vars = True
 
 for i in final_data:    
     #print(i)
+    if i[1] in variables:
+        print(i[1], "variable already defined")
+        error_present = True
     if (i[0] != 'var'):  
         vars = False
     if (i[0] == 'var'): #checks for erroe in middle of code
         if (vars == False):
             print("variable assigned in middle of code")
             error_present = True ######checks out till here
+    
     for j in i:    #checks for more than one halt
         if j == 'hlt':
             hlt_count+=1
