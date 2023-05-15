@@ -14,6 +14,8 @@ if (error_present == False):
     process2 = subprocess.Popen(['python', file2_to_run], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     stdout, stderr = process1.communicate()
+    
+    
 
 
 
@@ -22,6 +24,8 @@ if (error_present == False):
 
     # Print the output
     print('Standard Output:')
+    
     print(stdout)
     print('Standard Error:')
     print(stderr)
+    
