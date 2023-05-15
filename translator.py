@@ -1,4 +1,6 @@
 import reader
+from functions import dec_to_bin
+#we still have to work on lables and mem address
 
 
 R0 = 0
@@ -55,10 +57,13 @@ for i in range(len(input_list)):
 
             machinecode[i].append("0")
             machinecode[i].append(regs[input_list[i][1]])
-            machinecode[i].append(input_list[i][2])
-            print("this works ")
+            machinecode[i].append(dec_to_bin(input_list[i][2]))
+            print(input_list[i][2])
         else:
-            machinecode[i].append("0")
+            machinecode[i].append("00000")
+            machinecode[i].append(regs[input_list[i][1]])
+            machinecode[i].append(regs[input_list[i][2]])
+
             print("other conditionw orkds ")
     elif input_list[i][0] == 'ld':
         machinecode[i].append(ISA['ld'])
@@ -67,9 +72,6 @@ for i in range(len(input_list)):
     elif input_list[i][0] == 'mul':
         machinecode[i].append(ISA['mul'])
         machinecode[i].append("00")
-        #print("\n")
-        #print(regs[input_list[i][1]])
-        #print("look here!!")
         machinecode[i].append(regs[input_list[i][1]])
         machinecode[i].append(regs[input_list[i][2]])
         machinecode[i].append(regs[input_list[i][3]])
@@ -83,12 +85,12 @@ for i in range(len(input_list)):
         machinecode[i].append(ISA['rs'])
         machinecode[i].append("0")
         machinecode[i].append(regs[input_list[i][1]])
-        machinecode[i].append(regs[input_list][i][2])
+        machinecode[i].append(dec_to_bin(input_list[i][2]))
     elif input_list[i][0] == 'ls':
         machinecode[i].append(ISA['ls'])
         machinecode[i].append("0")
         machinecode[i].append(regs[input_list[i][1]])
-        machinecode[i].append(regs[input_list][i][2])
+        machinecode[i].append(dec_to_bin(input_list[i][2]))
     elif input_list[i][0] == 'xor':
         machinecode[i].append(ISA['xor'])
         machinecode[i].append("00")
@@ -109,15 +111,14 @@ for i in range(len(input_list)):
         machinecode[i].append(regs[input_list[i][3]])
     elif input_list[i][0] == 'not':
         machinecode[i].append(ISA['not'])
-        machinecode[i].append("00")
+        machinecode[i].append("00000")
         machinecode[i].append(regs[input_list[i][1]])
         machinecode[i].append(regs[input_list[i][2]])
     elif input_list[i][0] == 'cmp':
-        if(len(input_list[i] == 2)):
-            machinecode[i].append(ISA['cmp'])
-            machinecode[i].append("00000")
-            machinecode[i].append(regs[input_list[i][1]])
-            machinecode[i].append(regs[input_list[i][2]])
+        machinecode[i].append(ISA['cmp'])
+        machinecode[i].append("00000")
+        machinecode[i].append(regs[input_list[i][1]])
+        machinecode[i].append(regs[input_list[i][2]])
     elif input_list[i][0] == 'jmp':
         machinecode[i].append(ISA['jmp'])
         machinecode[i].append("0000")
