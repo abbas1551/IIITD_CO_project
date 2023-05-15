@@ -8,6 +8,7 @@ ISA = open("ISA.txt", 'r')
 ISA = ISA.read()
 ISA = eval(ISA)
 
+variables = []
 lables = []
 vars = True
 
@@ -25,13 +26,16 @@ for i in final_data:
                 print("hlt occures more than once")
                 error_present = True
     if i[0] == 'var':
-        lables.append(i[1])
+        variables.append(i[1])
+    if i[0][-1] == ':':
+        lables.append(i[0])
+    
     elif i[0] == 'st':  #checks for unknown variables in st funciton
-        if i[2] not in lables:
+        if i[2] not in variables:
             print(i[2], "not a variable")
             error_present = True
     elif i[0] == 'ld':  #checks for unknown variables in st funciton
-        if i[2] not in lables:
+        if i[2] not in variables:
             print(i[2], "not a variable")
             error_present = True
     elif ((i[0] == 'add') or (i[0] == 'sub') or ( i[0] == 'mul') or (i[0] == 'xor') or (i[0] == 'or')):  #checking if type A are correct
@@ -56,3 +60,13 @@ for i in final_data:
 if hlt_count == 0:
     print('No halt statement cound')
     error_present = True
+
+if final_data[-1][-1] != 'hlt':  #checks for last command to be halt
+    print("last command is not hlt")
+    error_present = True
+
+for i in final_data:  #checks for valid memeory address
+    if ((i[0] == 'jmp') or (i[0] == 'jlt') or (i[0] == 'jgt') or (i[0] == 'je')):  
+        if i[1]+':' not in lables:
+            print(i[1],"lable not found")
+            error_present = True
