@@ -1,9 +1,9 @@
 import subprocess
-from error_gen import error_present
+
 
 file_error_gen = 'error_gen.py'
 running_error_gen = subprocess.Popen(['python', file_error_gen], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
+from error_gen import error_present
 
 if (error_present == False):
     file1_to_run = 'writer.py'
