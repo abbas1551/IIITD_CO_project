@@ -7,7 +7,7 @@ Abbas has implemented efficient algorithms and optimized code to ensure smooth f
 
 2)-Abhishek Jha(2022023)-abhishek has written the output file of our code and he has helped in others also.
 
-3)-Angad Jeet(2022071) and Arnav Batra(2022098)-Angad and Arnav took charge of the error generation and runner module.
+3)-Angadjeet(2022071) and Arnav Batra(2022098)-Angad and Arnav took charge of the error generation and runner module.
 the error generation code was to identify the errors in the input file or assembly code and show what is the error.
 And for the runner module is the main file connecting all the other files of our project.
                           
