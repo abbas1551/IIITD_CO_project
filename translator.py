@@ -269,4 +269,4 @@ for i in range(len(input_list)):
 
 for i in machinecode:
     print(i)
-
+print(input_list)
