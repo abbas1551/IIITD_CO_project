@@ -1,5 +1,19 @@
+import sys
+
+ky=''
+for kx in sys.stdin:
+    ky+=kx
+
+f = open("input.txt", "w")
+f.write(ky)
+f.close()
+
 f = open("input.txt", "r")
 data = f.read()
+
+
+
+
 
 
 def reader(data):
