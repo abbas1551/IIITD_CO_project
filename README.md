@@ -10,5 +10,7 @@ Abbas has implemented efficient algorithms and optimized code to ensure smooth f
 3)-Angadjeet(2022071) and Arnav Batra(2022098)-Angad and Arnav took charge of the error generation and runner module.
 the error generation code was to identify the errors in the input file or assembly code and show what is the error.
 And for the runner module is the main file connecting all the other files of our project.
+
+Angadjeet Singh Rewrote the entire error_gen in order to make the file compatible with stdin.
                           
                     
