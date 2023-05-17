@@ -30,17 +30,40 @@ lab_address = bin(count)
 labels = []
 lables_dict = {}
 
+lable_numer = 0
+
 variables = {}
 add_var = 0
 
+
+#print(len(input_list))
+num_vars = 0
+
 for i in range(len(input_list)):
+    if input_list[i][0] == 'var':
+        num_vars+=1
+
+vars_temp = 0
+
+total = len(input_list)
+
+r = 0
+
+binvar = total - num_vars
+
+for i in range(len(input_list)):
+    r+=1
+    lable_numer+=1
+    if input_list[i][0] != 'var':
+        lable_numer += 1
     machinecode.append([])
     if input_list[i][0] == 'var':
-        variables[input_list[i][1]] = gen_address(add_var)
-        add_var+=1
+        variables[input_list[i][1]] = gen_address(binvar + vars_temp)
+        
     if input_list[i][0].count(":"):
-        labels.append([input_list[i][0],gen_address(count)])
-        lables_dict[input_list[i][0]] = gen_address(count)
+        
+        labels.append([input_list[i][0],gen_address(r-1-num_vars)])
+        lables_dict[input_list[i][0]] = gen_address(r-1-num_vars)
         count = count - 1
         if input_list[i][1] == 'add':
             machinecode[i].append(ISA['add'])
@@ -48,7 +71,6 @@ for i in range(len(input_list)):
             machinecode[i].append(regs[input_list[i][2]])
             machinecode[i].append(regs[input_list[i][3]])
             machinecode[i].append(regs[input_list[i][4]])
-            print(input_list[i][1])
         elif input_list[i][1] == 'sub':
             machinecode[i].append(ISA['sub'])
             machinecode[i].append("00")
@@ -61,7 +83,6 @@ for i in range(len(input_list)):
                 machinecode[i].append("0")
                 machinecode[i].append(regs[input_list[i][2]])
                 machinecode[i].append(dec_to_bin(input_list[i][3]))
-                print(input_list[i][3])
             else:
                 machinecode[i].append("00011")
                 machinecode[i].append("00000")
@@ -154,8 +175,9 @@ for i in range(len(input_list)):
 
 for i in range(len(input_list)): 
     if input_list[i][0] == 'var':
-        variables[input_list[i][1]] = gen_address(add_var)
-        add_var+=1
+        variables[input_list[i][1]] = gen_address(binvar + vars_temp)
+        vars_temp+=1
+        
         
 
     elif input_list[i][0] == 'add':
@@ -164,7 +186,6 @@ for i in range(len(input_list)):
         machinecode[i].append(regs[input_list[i][1]])
         machinecode[i].append(regs[input_list[i][2]])
         machinecode[i].append(regs[input_list[i][3]])
-        #print(input_list[i][1])
     elif input_list[i][0] == 'sub':
         machinecode[i].append(ISA['sub'])
         machinecode[i].append("00")
@@ -178,7 +199,6 @@ for i in range(len(input_list)):
             machinecode[i].append("0")
             machinecode[i].append(regs[input_list[i][1]])
             machinecode[i].append(dec_to_bin(input_list[i][2]))
-            #print(input_list[i][2])
         else:
             machinecode[i].append("00011")
             machinecode[i].append("00000")
@@ -195,7 +215,6 @@ for i in range(len(input_list)):
         machinecode[i].append("0")
         machinecode[i].append(regs[input_list[i][1]])
         machinecode[i].append(variables[input_list[i][2]])
-        #print("look here ->>", input_list[i][2])
         #machinecode[i].append("Memory location")
     elif input_list[i][0] == 'mul':
         machinecode[i].append(ISA['mul'])
@@ -266,7 +285,6 @@ for i in range(len(input_list)):
         machinecode[i].append(ISA['hlt'])    
         machinecode[i].append("00000000000")
 
-
-for i in machinecode:
-    print(i)
-print(input_list)
+# print(total)
+# print(num_vars)
+# print(variables)
