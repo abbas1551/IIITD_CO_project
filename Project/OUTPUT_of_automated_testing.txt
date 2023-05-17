@@ -1,0 +1,63 @@
+quantum@Abbas:/mnt/c/Btech Year 1/Sem2/CO_ group_project/CO_A_P1/automatedTesting$ ./run --no-sim
+==================================================
+================ TESTING ASSEMBLER ===============
+==================================================
+
+Runing simple tests
+[PASSED] test1
+[PASSED] test2
+[PASSED] test3
+[PASSED] test4
+[PASSED] test5
+
+Running hard tests
+[PASSED] test1
+[PASSED] test2
+[PASSED] test3
+[PASSED] test4
+[PASSED] test5
+Running error tests
+Running test1
+last command is not hlt
+Error agagag not a recognised command
+add takes 3 arguments 0 given
+add takes 3 arguments 2 given
+add takes 3 arguments 2 given
+add takes 3 arguments 2 given
+No halt statement found
+last command is not hlt
+============================================
+
+Running test2
+y not a variable
+============================================
+
+Running test3
+last command is not hlt
+No halt statement found
+last command is not hlt
+============================================
+
+Running test4
+last command is not hlt
+Error agagag not a recognised command
+add takes 3 arguments 0 given
+add takes 3 arguments 2 given
+add takes 3 arguments 2 given
+add takes 3 arguments 2 given
+No halt statement found
+last command is not hlt
+============================================
+
+Running test5
+myvar not a variable
+myvar not a variable
+============================================
+
+
+============== RESULTS =================
+
+Assembler ===>
+Simple: Marks = 10 out of 10
+Hard: Marks = 25 out of 25
+Total: 35 out of 35
